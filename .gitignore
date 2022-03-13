@@ -1,0 +1,7 @@
+.idea
+.env
+src/main
+vendor/
+*.sqlite
+.DS_Store
+config.json
