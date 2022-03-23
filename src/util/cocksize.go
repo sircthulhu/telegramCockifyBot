@@ -9,23 +9,30 @@ import (
 
 var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-// GenerateCockSize generates random number in range [1; 50]
+// GenerateCockSize generates random number with normal distribution N(20, 15*15)
 func GenerateCockSize() int {
-	// Let x has exponential distribution E(0.4)
-	x := rnd.Float64() * 5 // Random number in range [0; 5]
-	// then our cock size will be 1 - e ^ (-0.4 * x)
-	coefficient := 1 - math.Pow(math.E, -0.4*x)
-
-	// We need to return int as a cock size, so rounding it to the nearest integer
-	size := int(math.Round(coefficient * 40))
-	if size == 0 {
-		size++
+	size := int(math.Round(rnd.NormFloat64()*15 + 20))
+	// size cannot be less or equals to zero
+	if size <= 0 {
+		size = 1
 	}
+
 	return size
 }
 
 // FormatCockSizeMessage formats string for cock size
 func FormatCockSizeMessage(size int) string {
-	//TODO: emoji
-	return fmt.Sprintf("My cock size is %d cm", size)
+	str := fmt.Sprintf("My cock size is %d cm.", size)
+
+	if size <= 5 {
+		str += " It's cold today 🥶"
+	} else if size < 15 { // (5;15)
+		str += " Size doesn't matter🫡"
+	} else if size > 30 { // (30; infinity)
+		str += " Holy shit😱"
+	} else if size >= 25 { // [15; 25]
+		str += " I'm a giant!😏"
+	}
+
+	return str
 }

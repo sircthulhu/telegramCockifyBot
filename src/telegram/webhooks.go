@@ -43,7 +43,7 @@ func HandleWebhook(tgClient Client, c *gin.Context) {
 func handleInlineQuery(update update, tgClient Client) error {
 	answer := answerInlineQueryParams{
 		InlineQueryID: update.InlineQuery.ID,
-		CacheTime:     60, //int(time.Hour * 12),
+		CacheTime:     60, //int(time.Hour * 12), // TODO: replace 60 seconds with 12 hours after tests
 		IsPersonal:    true,
 		Results: []inlineQueryResultArticle{
 			{
