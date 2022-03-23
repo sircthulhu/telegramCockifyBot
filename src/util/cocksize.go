@@ -9,9 +9,9 @@ import (
 
 var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-// GenerateCockSize generates random number with normal distribution N(20, 15*15)
+// GenerateCockSize generates random number with normal distribution N(15, 10*10)
 func GenerateCockSize() int {
-	size := int(math.Round(rnd.NormFloat64()*15 + 20))
+	size := int(math.Round(rnd.NormFloat64()*15 + 10))
 	// size cannot be less or equals to zero
 	if size <= 0 {
 		size = 1
