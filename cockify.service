@@ -1,0 +1,13 @@
+Description=Telegram Cockify Bot
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/var/www/cockify/server /var/www/cockify/config.json
+Restart=always
+User=www-data
+Group=www-data
+Environment=GIN_MODE=release
+
+[Install]
+WantedBy=multi-user.target
