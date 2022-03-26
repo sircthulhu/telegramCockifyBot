@@ -73,7 +73,6 @@ func main() {
 
 	router := setupRouter()
 	address := Configuration.Host + ":" + strconv.Itoa(Configuration.Port)
-	gin.SetMode(gin.ReleaseMode)
 	err = router.Run(address)
 	if err != nil {
 		log.Fatalf("Could not start webserver on %s: %v", address, err)

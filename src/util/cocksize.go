@@ -2,22 +2,15 @@ package util
 
 import (
 	"fmt"
-	"math"
 	"math/rand"
 	"time"
 )
 
 var rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-// GenerateCockSize generates random number with normal distribution N(15, 10*10)
+// GenerateCockSize generates random number with normal distribution N(8, 5)
 func GenerateCockSize() int {
-	size := int(math.Round(rnd.NormFloat64()*15 + 10))
-	// size cannot be less or equals to zero
-	if size <= 0 {
-		size = 1
-	}
-
-	return size
+	return rnd.Intn(40)
 }
 
 // FormatCockSizeMessage formats string for cock size
