@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"telegramCockifyBot/src/util"
+	"time"
 )
 
 // HandleWebhook handles webhooks from telegram
@@ -43,7 +44,7 @@ func HandleWebhook(tgClient Client, c *gin.Context) {
 func handleInlineQuery(update update, tgClient Client) error {
 	answer := answerInlineQueryParams{
 		InlineQueryID: update.InlineQuery.ID,
-		CacheTime:     60, //int(time.Hour * 12), // TODO: replace 60 seconds with 12 hours after tests
+		CacheTime:     int(time.Hour * 12),
 		IsPersonal:    true,
 		Results: []inlineQueryResultArticle{
 			{
