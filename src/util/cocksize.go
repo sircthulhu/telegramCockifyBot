@@ -26,7 +26,7 @@ func FormatCockSizeMessage(size int) string {
 	} else if size >= 25 { // [15; 25]
 		str += " I'm a giant!😏"
 	}
-	str += "\n(" + time.Now().Format("02.01.06 15:04:05 MST") + ")"
+	str += "\n(" + time.Now().Format("02.01.06 15:04 MST") + ")"
 
 	return str
 }
